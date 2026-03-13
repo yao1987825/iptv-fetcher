@@ -2,11 +2,11 @@ version: '3.8'
 
 services:
   iptv_fetcher:
-    image: curlimages/curl:latest
+    image: ghcr.io/yao1987825/iptv-fetcher:latest
     container_name: iptv_fetcher
     network_mode: host
     volumes:
-      - ./data:/data
+      - ${DATA_DIR:-./data}:/data
     environment:
       - SOURCE_URL=${SOURCE_URL:-https://gh-proxy.com/https://raw.githubusercontent.com/yaojiwei520/IPTV/refs/heads/main/iptv.m3u}
       - FETCH_INTERVAL=${FETCH_INTERVAL:-3600}

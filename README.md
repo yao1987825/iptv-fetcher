@@ -2,6 +2,21 @@
 
 自动从 GitHub 获取 IPTV 直播源 M3U 文件。
 
+## Docker 镜像
+
+```bash
+# 拉取镜像
+docker pull ghcr.io/yao1987825/iptv-fetcher:latest
+
+# 启动容器
+docker run -d \
+  --name iptv_fetcher \
+  --network host \
+  -v ./data:/data \
+  -e SOURCE_URL="https://gh-proxy.com/https://raw.githubusercontent.com/yaojiwei520/IPTV/refs/heads/main/iptv.m3u" \
+  ghcr.io/yao1987825/iptv-fetcher:latest
+```
+
 ## 功能
 
 - 自动从指定的 GitHub 仓库获取 IPTV 直播源
