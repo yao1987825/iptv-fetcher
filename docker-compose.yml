@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  iptv_fetcher:
+    image: curlimages/curl:latest
+    container_name: iptv_fetcher
+    network_mode: host
+    volumes:
+      - ./data:/data
+    environment:
+      - SOURCE_URL=${SOURCE_URL:-https://gh-proxy.com/https://raw.githubusercontent.com/yaojiwei520/IPTV/refs/heads/main/iptv.m3u}
+      - FETCH_INTERVAL=${FETCH_INTERVAL:-3600}
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
